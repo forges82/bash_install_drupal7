@@ -12,7 +12,16 @@ drush7 cc all
 drush7 zen personalizado
 drush7 vset theme_default personalizado
 chown -R www-data:www-data .
-chmod 644 . -R
+chmod 744 . -R
 chmod 440 .htaccess
 chmod 440 sites/default/settings.php
 chmod 775 sites/default/files/ -R
+drush7 en locale --y
+drush7 dl drush_language
+drush7 dl l10n_update && drush7 en -y $_
+drush7 language-add es && drush7 language-enable $_
+drush7 l10n-update-refresh
+drush7 l10n-update
+drush cc all
+drush7 language-default es
+drush7 language-disable en
